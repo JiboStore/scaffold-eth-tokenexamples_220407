@@ -11,7 +11,11 @@ contract Inflating is ERC20 {
     uint256 startBlock;
     uint256 tokensPerBlock;
 
+    address public creator;
+    address public outstandingMinter;
+
     constructor() ERC20("INFLATING", "INFL") public {
+      creator = msg.sender;
       startBlock = block.number;
       tokensPerBlock = 10000000000000000000;
     }
@@ -32,6 +36,7 @@ contract Inflating is ERC20 {
     function mintOutstandingTokens() public {
       uint256 available = outstandingTokens();
       require(available > 0, "No tokens available");
+      outstandingMinter = msg.sender;
       _mint(msg.sender, available);
     }
 }

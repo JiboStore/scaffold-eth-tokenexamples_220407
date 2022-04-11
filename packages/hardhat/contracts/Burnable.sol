@@ -4,7 +4,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract Burnable is ERC20 {
 
+    address public creator;
+
     constructor() ERC20("Burnable", "BURN") public {
+      creator = msg.sender;
     }
 
     function mintTokens() public {
