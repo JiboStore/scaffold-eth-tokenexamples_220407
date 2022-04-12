@@ -101,7 +101,7 @@ task("wallet", "Create a wallet (pk) link", async (_, { ethers }) => {
   const randomWallet = ethers.Wallet.createRandom()
   const privateKey = randomWallet._signingKey().privateKey
   console.log("🔐 WALLET Generated as " + randomWallet.address + "")
-  console.log("🔗 http://localhost:3000/pk#"+privateKey)
+  console.log("🔗 http://localhost:3006/pk#"+privateKey)
 });
 
 
@@ -113,7 +113,7 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
     const randomWallet = ethers.Wallet.createRandom()
     const privateKey = randomWallet._signingKey().privateKey
     console.log("🔐 WALLET Generated as " + randomWallet.address + "")
-    let url = taskArgs.url?taskArgs.url:"http://localhost:3000"
+    let url = taskArgs.url?taskArgs.url:"http://localhost:3006"
 
     let localDeployerMnemonic
     try{
